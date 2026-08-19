@@ -24,23 +24,48 @@ export function TaskCard({
     : Math.round((completed/total) * 100)
 
     return (
-      <article>
-        <h3>
-          {task.title}
-        </h3>
-        <p>
-          {task.description}
-        </p>
-        <p>
-          Prioridad:
-          {task.priority}
-        </p>
-        <p>
-          Progreso:
-          {progress}
-        </p>
-        <progress value={progress} max={100} />
-        <MicroTaskList microTasks={task.microTasks} onToogle={(microTaskId) => onToggleMicroTask(task.id, microTaskId)}/>
+      <article className="task-card">
+        <div className="task-header">
+          <div>
+            <span className="task-label">
+              TASK
+            </span>
+             <h3>
+              {task.title}
+            </h3>
+            <p className="task-description">
+              {task.description}
+            </p>
+          </div>
+          <span className={`priority priority-${task.priority}`}>
+            <p>
+              Prioridad:
+              {task.priority}
+            </p>
+          </span>
+       </div>
+       
+      <div className="task-progress">
+        <div className="progress-header">
+          <span>
+            Progress
+          </span>
+          <span>
+            {completed}/{total} microtasks
+          </span>
+        </div>
+      </div>
+       
+        <div className="progress-bar">
+          <div className="progress-value" style={{width:`${progress}`}} />
+        </div>
+        <span className="progress-percentage">
+          {progress}%
+        </span>
+        <div className="microtasks">
+          <h4>MicroTasks</h4>
+          <MicroTaskList microTasks={task.microTasks} onToogle={(microTaskId) => onToggleMicroTask(task.id, microTaskId)}/>
+        </div>
       </article>
     )
 }
