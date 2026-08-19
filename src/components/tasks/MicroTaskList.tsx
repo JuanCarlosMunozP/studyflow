@@ -13,7 +13,7 @@ export function MicroTaskList({
         <div>
             {microTasks.map((microTask) => (
                 <label key={microTask.id}>
-                    <input type="checkbox" checked={microTask.completed} />
+                    <input type="checkbox" checked={microTask.completed} onChange={() => onToogle(microTask.id)}/>
                     <span>
                         {microTask.title}
                     </span>
