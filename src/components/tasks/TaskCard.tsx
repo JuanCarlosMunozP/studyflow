@@ -3,7 +3,7 @@ import { MicroTaskList } from "./MicroTaskList";
 
 interface TaskCardProps {
     task:Task;
-    onToogleMicroTask: (
+    onToggleMicroTask: (
         taskId: string,
         microTaskId: string
     ) => void;
@@ -11,7 +11,7 @@ interface TaskCardProps {
 
 export function TaskCard({
     task,
-    onToogleMicroTask
+    onToggleMicroTask
 }: TaskCardProps) {
     const completed = task.microTasks.filter(
         (microTask) => microTask.completed
@@ -39,7 +39,7 @@ export function TaskCard({
             </p>
             <progress value={progress} max={100}/>
 
-            <MicroTaskList microTasks={task.microTasks} onToogle={(microTaskId) => onToogleMicroTask(task.id, microTaskId)} />
+            <MicroTaskList microTasks={task.microTasks} onToogle={(microTaskId) => onToggleMicroTask(task.id, microTaskId)} />
         </article>
     )
 } 
